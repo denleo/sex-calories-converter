@@ -1,0 +1,59 @@
+.person-form {
+  display: flex;
+  flex-direction: column;
+
+  &__heart {
+    padding: 0 0.2rem;
+    animation: heartbeat 1s infinite;
+  }
+
+  &__section {
+    gap: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__section-title {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--grey-800);
+  }
+
+  &__label {
+    display: block;
+    align-items: center;
+    color: var(--grey-800);
+    font: caption;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

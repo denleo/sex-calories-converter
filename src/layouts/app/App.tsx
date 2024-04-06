@@ -24,12 +24,14 @@ const initialFormState: PersonFormState = {
 type AppState = {
   personInfo: PersonFormState;
   statistics?: StatisticsProps;
+  backgroundSpeed: number;
 };
 
 function App() {
-  const [state, setState] = useState<AppState>({
+  const [appState, setAppState] = useState<AppState>({
     personInfo: initialFormState,
     statistics: undefined,
+    backgroundSpeed: 8,
   });
 
   function handlePersonFormSubmit(data: PersonFormState) {
@@ -52,31 +54,41 @@ function App() {
       ),
     };
 
-    setState({
+    setAppState({
       personInfo: data,
       statistics: stats,
+      backgroundSpeed: 0.5,
     });
   }
 
   function handleStatisticsClose() {
-    setState((state) => ({
+    setAppState((state) => ({
       ...state,
       statistics: undefined,
+      backgroundSpeed: 8,
     }));
   }
 
+  const backgroundAnimationStyle: React.CSSProperties = {
+    animationDuration: `${appState.backgroundSpeed}s`,
+    animationDelay: "0s",
+    animationName: "scroll",
+    animationTimingFunction: "linear",
+    animationIterationCount: "infinite",
+  };
+
   return (
-    <main className="app-container">
+    <main className="app-container" style={backgroundAnimationStyle}>
       <Card>
-        {state.statistics ? (
+        {appState.statistics ? (
           <Statistics
-            data={state.statistics!}
+            data={appState.statistics!}
             onClose={handleStatisticsClose}
           />
         ) : (
           <PersonForm
             onSubmit={handlePersonFormSubmit}
-            intitialFormState={state.personInfo}
+            intitialFormState={appState.personInfo}
           />
         )}
       </Card>

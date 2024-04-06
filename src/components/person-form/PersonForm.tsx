@@ -181,17 +181,9 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
             min={0}
             max={30}
             value={formState.sexTime}
-            onChange={(x) => {
-              const bg = document.getElementsByClassName(
-                "app-container"
-              )[0] as HTMLElement;
-              bg.style.animation = `scroll linear ${x! / 5}s infinite`;
-
-              setFormState((state) => ({
-                ...state,
-                sexTime: x!,
-              }));
-            }}
+            onChange={(x) =>
+              setFormState((state) => ({ ...state, sexTime: x! }))
+            }
           />
         </div>
       </section>

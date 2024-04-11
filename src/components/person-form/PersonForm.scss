@@ -101,12 +101,11 @@
 
 @media (max-width: 386px) {
   .person-form__inputs {
-    grid-template: 5rem 5rem 5rem 5rem 5rem / max-content;
+    grid-template: 5rem 5rem 5rem 5rem / max-content max-content;
     grid-template-areas:
-      "gender"
-      "activity"
-      "age"
-      "weight"
-      "height";
+      "gender gender"
+      "activity activity"
+      "age weight"
+      "height height";
   }
 }

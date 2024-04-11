@@ -53,32 +53,32 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
   return (
     <form className="person-form">
       <section className="person-form__section">
-        <Divider style={{ fontSize: "1.8rem" }}>
+        <Divider style={{ fontSize: "1.8rem", margin: "0" }}>
           <h2 className="person-form__section-title">
             Информация <UserOutlined style={{ color: "var(--blue-900)" }} />
           </h2>
         </Divider>
         <div className="person-form__inputs">
-          <Radio.Group
-            buttonStyle="solid"
-            value={formState.person.gender}
-            onChange={(e) =>
-              setFormState((state) => ({
-                sexTime: state.sexTime,
-                person: { ...state.person, gender: e.target.value },
-              }))
-            }
-          >
-            <Radio.Button value={Gender.Male}>
-              Мужчина <ManOutlined />
-            </Radio.Button>
-            <Radio.Button value={Gender.Female}>
-              Женщина <WomanOutlined />
-            </Radio.Button>
-          </Radio.Group>
-        </div>
-        <div className="person-form__inputs">
-          <div>
+          <div className="person-form__gender">
+            <Radio.Group
+              buttonStyle="solid"
+              value={formState.person.gender}
+              onChange={(e) =>
+                setFormState((state) => ({
+                  sexTime: state.sexTime,
+                  person: { ...state.person, gender: e.target.value },
+                }))
+              }
+            >
+              <Radio.Button value={Gender.Male}>
+                Мужчина <ManOutlined />
+              </Radio.Button>
+              <Radio.Button value={Gender.Female}>
+                Женщина <WomanOutlined />
+              </Radio.Button>
+            </Radio.Group>
+          </div>
+          <div className="person-form__activity">
             <label htmlFor="kfa" className="person-form__label">
               Уровень физической активности:
             </label>
@@ -99,9 +99,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
               }
             />
           </div>
-        </div>
-        <div className="person-form__inputs">
-          <div>
+          <div className="person-form__age">
             <label htmlFor="age" className="person-form__label">
               Возраст:
             </label>
@@ -118,7 +116,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
               }
             />
           </div>
-          <div>
+          <div className="person-form__weight">
             <label htmlFor="weight" className="person-form__label">
               Вес (кг):
             </label>
@@ -135,7 +133,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
               }
             />
           </div>
-          <div>
+          <div className="person-form__height">
             <label htmlFor="height" className="person-form__label">
               Рост (см):
             </label>
@@ -155,7 +153,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
         </div>
       </section>
       <section className="person-form__section">
-        <Divider style={{ fontSize: "1.8rem" }}>
+        <Divider style={{ fontSize: "1.8rem", margin: "0" }}>
           <h2 className="person-form__section-title">
             <HeartTwoTone
               twoToneColor={["var(--pink-800)", "var(--red-400)"]}
@@ -171,7 +169,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
             />
           </h2>
         </Divider>
-        <div className="person-form__inputs">
+        <div className="person-form person-form_flex-row person-form_gap-1">
           <label htmlFor="sexTime" className="person-form__label">
             Длительность, в минутах:
           </label>
@@ -179,7 +177,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
             id="sexTime"
             style={{ width: "6rem" }}
             min={0}
-            max={30}
+            max={120}
             value={formState.sexTime}
             onChange={(x) =>
               setFormState((state) => ({ ...state, sexTime: x! }))
@@ -187,7 +185,7 @@ function PersonForm({ onSubmit, intitialFormState }: PersonFormProps) {
           />
         </div>
       </section>
-      <footer className="person-form__footer">
+      <footer className="person-form__footer person-form_flex-row">
         <Button
           type="primary"
           htmlType="submit"

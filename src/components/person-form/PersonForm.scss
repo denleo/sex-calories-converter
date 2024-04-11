@@ -9,7 +9,7 @@
 
   &__section {
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,18 +31,59 @@
   }
 
   &__inputs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template: 5rem 5rem 5rem / min-content min-content min-content;
+    grid-template-areas:
+      "gender gender gender"
+      "activity activity activity"
+      "age weight height";
     width: 100%;
+    justify-items: center;
+    align-items: center;
+    row-gap: 0.8rem;
+    column-gap: 0.8rem;
   }
 
-  &__footer {
-    margin-top: 2rem;
+  &__gender {
+    grid-area: gender;
+  }
+
+  &__activity {
+    grid-area: activity;
+  }
+
+  &__age {
+    grid-area: age;
+  }
+
+  &__weight {
+    grid-area: weight;
+  }
+
+  &__height {
+    grid-area: height;
+  }
+
+  &_flex-row {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
+  }
+
+  &_flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_gap-1 {
+    gap: 1rem;
+  }
+
+  &_gap-2 {
+    gap: 2rem;
   }
 }
 
@@ -55,5 +96,17 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 386px) {
+  .person-form__inputs {
+    grid-template: 5rem 5rem 5rem 5rem 5rem / max-content;
+    grid-template-areas:
+      "gender"
+      "activity"
+      "age"
+      "weight"
+      "height";
   }
 }
